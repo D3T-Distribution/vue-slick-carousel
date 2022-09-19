@@ -49,7 +49,7 @@ export default {
     customPaging: Function,
   },
   data() {
-    return { ...initialState, currentSlide: this.initialSlide }
+    return { ...initialState, currentSlide: this.initialSlide, slickSlideHidden: true }
   },
   computed: {
     slideCount() {
@@ -278,6 +278,7 @@ export default {
         useCSS: this.useCSS && !dontAnimate,
       })
       if (!state) return
+      this.slickSlideHidden = false
       this.$parent.$emit('beforeChange', currentSlide, state.currentSlide)
       let slidesToLoad = state.lazyLoadedList.filter(
         value => this.lazyLoadedList.indexOf(value) < 0,
@@ -299,6 +300,7 @@ export default {
           }, 10),
         )
         this.$parent.$emit('afterChange', state.currentSlide)
+        this.slickSlideHidden = true
         // delete this.animationEndCallback
         this.animationEndCallback = undefined
       }, speed)

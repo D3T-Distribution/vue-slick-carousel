@@ -464,6 +464,7 @@ export const PROP_KEYS = {
     'variableWidth',
     'unslick',
     'centerPadding',
+    'slickSlideHidden'
   ],
   DOT: [
     'dotsClass',

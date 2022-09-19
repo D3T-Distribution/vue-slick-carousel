@@ -171,3 +171,9 @@
   opacity: 0.75;
   color: black;
 }
+.slick-slide--hidden  {
+  visibility: hidden;
+}
+.slick-active {
+  visibility: visible;
+}

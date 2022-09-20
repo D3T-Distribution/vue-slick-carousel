@@ -278,7 +278,7 @@ export default {
         useCSS: this.useCSS && !dontAnimate,
       })
       if (!state) return
-      this.toggleNoActiveSlide()
+      this.toggleNotActiveSlide()
       this.$parent.$emit('beforeChange', currentSlide, state.currentSlide)
       let slidesToLoad = state.lazyLoadedList.filter(
         value => this.lazyLoadedList.indexOf(value) < 0,
@@ -300,12 +300,12 @@ export default {
           }, 10),
         )
         this.$parent.$emit('afterChange', state.currentSlide)
-        this.toggleNoActiveSlide()
+        this.toggleNotActiveSlide()
         // delete this.animationEndCallback
         this.animationEndCallback = undefined
       }, speed)
     },
-    toggleNoActiveSlide() {
+    toggleNotActiveSlide() {
       if(this.notActiveSlideHidden) {
         this.notActiveHidden = !this.notActiveHidden
       }

@@ -49,7 +49,7 @@ export default {
     customPaging: Function,
   },
   data() {
-    return { ...initialState, currentSlide: this.initialSlide, notActiveHidden: this.noActiveSlideHidden }
+    return { ...initialState, currentSlide: this.initialSlide, notActiveHidden: this.notActiveSlideHidden }
   },
   computed: {
     slideCount() {
@@ -306,7 +306,7 @@ export default {
       }, speed)
     },
     toggleNoActiveSlide() {
-      if(this.noActiveSlideHidden) {
+      if(this.notActiveSlideHidden) {
         this.notActiveHidden = !this.notActiveHidden
       }
     },

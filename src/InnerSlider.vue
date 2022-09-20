@@ -49,7 +49,7 @@ export default {
     customPaging: Function,
   },
   data() {
-    return { ...initialState, currentSlide: this.initialSlide, noActiveHidden: this.noActiveSlideHidden }
+    return { ...initialState, currentSlide: this.initialSlide, notActiveHidden: this.noActiveSlideHidden }
   },
   computed: {
     slideCount() {
@@ -307,7 +307,7 @@ export default {
     },
     toggleNoActiveSlide() {
       if(this.noActiveSlideHidden) {
-        this.noActiveHidden = !this.noActiveHidden
+        this.notActiveHidden = !this.notActiveHidden
       }
     },
     onWindowResized(setTrackStyle) {

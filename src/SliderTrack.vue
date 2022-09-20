@@ -38,7 +38,7 @@ const getSlideClasses = spec => {
     'slick-center': slickCenter,
     'slick-cloned': slickCloned,
     'slick-current': slickCurrent, // dubious in case of RTL
-    'slick-slide--hidden': spec.noActiveHidden
+    'slick-slide--hidden': spec.notActiveHidden
   }
 }
 

@@ -49,7 +49,7 @@ export default {
     customPaging: Function,
   },
   data() {
-    return { ...initialState, currentSlide: this.initialSlide, slickSlideHidden: true }
+    return { ...initialState, currentSlide: this.initialSlide, noActiveHidden: false }
   },
   computed: {
     slideCount() {
@@ -215,6 +215,9 @@ export default {
       }
     },
     ssrInit() {
+      if(this.noActiveSlideHidden) {
+        this.noActiveHidden = true;
+      }
       const preClones = getPreClones(this.spec)
       const postClones = getPostClones(this.spec)
       if (this.variableWidth) {
@@ -278,7 +281,7 @@ export default {
         useCSS: this.useCSS && !dontAnimate,
       })
       if (!state) return
-      this.slickSlideHidden = false
+      this.toggleNoActiveSlide()
       this.$parent.$emit('beforeChange', currentSlide, state.currentSlide)
       let slidesToLoad = state.lazyLoadedList.filter(
         value => this.lazyLoadedList.indexOf(value) < 0,
@@ -300,10 +303,15 @@ export default {
           }, 10),
         )
         this.$parent.$emit('afterChange', state.currentSlide)
-        this.slickSlideHidden = true
+        this.toggleNoActiveSlide()
         // delete this.animationEndCallback
         this.animationEndCallback = undefined
       }, speed)
+    },
+    toggleNoActiveSlide() {
+      if(this.noActiveSlideHidden) {
+        this.noActiveHidden = !this.noActiveHidden
+      }
     },
     onWindowResized(setTrackStyle) {
       if (this.debouncedResize) this.debouncedResize.cancel()

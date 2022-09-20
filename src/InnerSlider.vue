@@ -49,7 +49,7 @@ export default {
     customPaging: Function,
   },
   data() {
-    return { ...initialState, currentSlide: this.initialSlide, noActiveHidden: false }
+    return { ...initialState, currentSlide: this.initialSlide, noActiveHidden: this.noActiveSlideHidden }
   },
   computed: {
     slideCount() {
@@ -215,9 +215,6 @@ export default {
       }
     },
     ssrInit() {
-      if(this.noActiveSlideHidden) {
-        this.noActiveHidden = true;
-      }
       const preClones = getPreClones(this.spec)
       const postClones = getPostClones(this.spec)
       if (this.variableWidth) {

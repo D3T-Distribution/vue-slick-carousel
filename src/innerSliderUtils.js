@@ -461,8 +461,7 @@ export const PROP_KEYS = {
     'slidesToScroll',
     'slideCount',
     'trackStyle',
-    'variableWi',
-    'dth',
+    'variableWidth',
     'unslick',
     'centerPadding',
     'ariaHiddenDisabled'

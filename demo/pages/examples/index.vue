@@ -20,6 +20,7 @@
             :class="classes"
             ref="c1"
             :asNavFor="config.asNavFor ? $refs.c2 : null"
+            :ariaHiddenDisabled="false"
           >
             <div
               v-for="(width, index) in slidesWidth"

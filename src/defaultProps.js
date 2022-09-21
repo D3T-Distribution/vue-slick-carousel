@@ -36,7 +36,7 @@ export const props = {
   variableWidth: { type: Boolean, default: false },
   vertical: { type: Boolean, default: false },
   waitForAnimate: { type: Boolean, default: true },
-  notActiveSlideHidden: { type: Boolean, default: true}
+  ariaHiddenDisabled: { type: Boolean, default: true}
 }
 
 export const defaultValues = Object.keys(props).reduce((acc, key) => {

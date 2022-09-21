@@ -461,10 +461,11 @@ export const PROP_KEYS = {
     'slidesToScroll',
     'slideCount',
     'trackStyle',
-    'variableWidth',
+    'variableWi',
+    'dth',
     'unslick',
     'centerPadding',
-    'notActiveHidden'
+    'ariaHiddenDisabled'
   ],
   DOT: [
     'dotsClass',

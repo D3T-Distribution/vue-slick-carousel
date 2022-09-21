@@ -38,8 +38,19 @@ const getSlideClasses = spec => {
     'slick-center': slickCenter,
     'slick-cloned': slickCloned,
     'slick-current': slickCurrent, // dubious in case of RTL
-    'slick-slide--hidden': spec.notActiveHidden
   }
+}
+
+const getSlideAttributes = (ariaHiddenDisabled, isActiveSlide, index) => {
+  const attributes = {
+    tabIndex: '-1',
+    'data-index': index
+  }
+
+  if(!ariaHiddenDisabled) {
+    attributes["aria-hidden"] = isActiveSlide.toString()
+  }
+  return attributes
 }
 
 const getSlideStyle = spec => {
@@ -126,6 +137,7 @@ export default {
         }
         let childStyle = getSlideStyle({ ...spec, index })
         let slideClasses = getSlideClasses({ ...spec, index })
+        let slideAttributes = getSlideAttributes(spec.ariaHiddenDisabled, slideClasses['slick-active'], index)
         // push a cloned element of the desired slide
         slides.push(
           this.cloneSlide(child, {
@@ -135,11 +147,7 @@ export default {
               outline: 'none',
               ...childStyle,
             },
-            attrs: {
-              tabIndex: '-1',
-              'data-index': index,
-              'aria-hidden': `${!slideClasses['slick-active']}`,
-            },
+            attrs: slideAttributes,
             childOnClickOptions,
           }),
         )
@@ -160,16 +168,13 @@ export default {
               child = elem
             }
             slideClasses = getSlideClasses({ ...spec, index: key })
+            slideAttributes = getSlideAttributes(spec.ariaHiddenDisabled, slideClasses['slick-active'], key)
             preCloneSlides.push(
               this.cloneSlide(child, {
                 key: 'precloned' + getKey(child, key),
                 class: slideClasses,
                 style: childStyle,
-                attrs: {
-                  tabIndex: '-1',
-                  'data-index': key,
-                  'aria-hidden': `${!slideClasses['slick-active']}`,
-                },
+                attrs: slideAttributes,
                 childOnClickOptions,
               }),
             )
@@ -181,16 +186,13 @@ export default {
               child = elem
             }
             slideClasses = getSlideClasses({ ...spec, index: key })
+            slideAttributes = getSlideAttributes(spec.ariaHiddenDisabled, slideClasses['slick-active'], key)
             postCloneSlides.push(
               this.cloneSlide(child, {
                 key: 'postcloned' + getKey(child, key),
                 class: slideClasses,
                 style: childStyle,
-                attrs: {
-                  tabIndex: '-1',
-                  'data-index': key,
-                  'aria-hidden': `${!slideClasses['slick-active']}`,
-                },
+                attrs: slideAttributes,
                 childOnClickOptions,
               }),
             )
